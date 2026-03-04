@@ -4,7 +4,6 @@ session_start();
 // Puxa a conexão com o banco de dados
 require_once '../config/database.php';
 
-// Agora pegamos a ação via $_POST (mais seguro)
 $action = isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '');
 
 if ($action == 'register') {
@@ -12,7 +11,7 @@ if ($action == 'register') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    // Verifica se o e-mail já existe no banco
+    // Verifica se o e-mail já existe no coiso do banco
     $checkEmail = $conn->prepare("SELECT id FROM users WHERE email = :email");
     $checkEmail->bindParam(':email', $email);
     $checkEmail->execute();
@@ -22,10 +21,10 @@ if ($action == 'register') {
         exit;
     }
 
-    // Criptografa a senha
+    // Criptografa a senha pra os bigode não descobrir
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insere o novo usuário
+    // Insere o novo ser usuário
     $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':email', $email);

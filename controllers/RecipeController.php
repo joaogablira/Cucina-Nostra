@@ -2,7 +2,7 @@
 session_start();
 require_once '../config/database.php';
 
-// Segurança: Se não estiver logado, não pode enviar receita
+// Segurança: Se os cara não estiver logado, não pode enviar receita
 if (!isset($_SESSION['user_id'])) {
     echo "<script>alert('Você precisa estar logado para enviar uma receita!'); window.location.href='../login.php';</script>";
     exit;

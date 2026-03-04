@@ -5,7 +5,8 @@ require_once 'config/database.php';
 // Lógica de Filtro e Pesquisa
 $where = "WHERE 1=1";
 $params = [];
-
+ 
+// negocio pra buscar as coisa
 if (isset($_GET['busca']) && !empty(trim($_GET['busca']))) {
     $where .= " AND (r.title LIKE :busca OR u.name LIKE :busca)";
     $params[':busca'] = '%' . trim($_GET['busca']) . '%';
@@ -16,6 +17,7 @@ if (isset($_GET['categoria']) && !empty($_GET['categoria'])) {
     $params[':categoria'] = $_GET['categoria'];
 }
 
+// buscar o autor de tal comida gostosa
 $query = "SELECT r.*, u.name as autor, 
           (SELECT COUNT(*) FROM votes v WHERE v.recipe_id = r.id) as total_votos 
           FROM recipes r 
@@ -97,7 +99,7 @@ $receitas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <?php echo htmlspecialchars($_SESSION['user_name']); ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end mt-3 shadow-lg border-0" style="border-radius: 15px;">
-                                <li><a class="dropdown-item text-success fw-bold py-2" href="sugerir_receita.php">✨ Sugerir Receita</a></li>
+                                <li><a class="dropdown-item text-success fw-bold py-2" href="sugerir_receita.php"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FF3B30"><path d="M360-400h80v-200h-80v200Zm-160-60q-46-23-73-66.5T100-621q0-75 51.5-127T278-800q12 0 24.5 2t24.5 5q25-41 65-64t88-23q48 0 88 23t65 64q12-3 24-5t25-2q75 0 126.5 52T860-621q0 51-27 94.5T760-460v220H200v-220Zm320 60h80v-200h-80v200Zm-240 80h400v-189l44-22q26-13 41-36.5t15-52.5q0-42-28.5-71T682-720q-11 0-20 2t-19 5l-47 13-31-52q-14-23-36.5-35.5T480-800q-26 0-48.5 12.5T395-752l-31 52-48-13q-10-2-19.5-4.5T277-720q-41 0-69 29t-28 71q0 29 15 52.5t41 36.5l44 22v189Zm-80 80h80v80h400v-80h80v160H200v-160Zm280-80Z"/></svg> Sugerir Receita</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-danger py-2" href="controllers/AuthController.php?action=logout">Sair</a></li>
                             </ul>

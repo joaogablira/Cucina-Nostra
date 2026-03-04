@@ -19,7 +19,7 @@
                 <p>Nascido como um desafio acadêmico, o projeto foca em <strong>Gestão de Conteúdo Web</strong>, permitindo que usuários não apenas consumam, mas construam juntos um acervo gastronômico através de um sistema interativo de sugestões e votações.</p>
                 
                 <div class="card bg-light border-0 p-4 mt-5 shadow-sm" style="border-radius: 20px; border-left: 5px solid #4caf50 !important;">
-                    <h5 class="fw-bold">🎓 Nota do Projeto</h5>
+                    <h5 class="fw-bold"> Nota do Projeto</h5>
                     <p class="mb-1"><strong>Disciplina:</strong> Gestão de Conteúdo Web</p>
                     <p class="mb-1"><strong>Orientação:</strong> Profª Edilma Bindá</p>
                     <p class="mb-0"><strong>Desenvolvimento:</strong> João Gabriel Tavares de Lira</p>
@@ -51,24 +51,6 @@
     </div>
 
     <div class="separador-bandeira mt-5"></div>
-
-    <div class="container my-5">
-        <div class="text-center mb-5">
-            <h1 class="fw-bold text-azul-escuro">Histórias da nossa Culinária</h1>
-            <h3 class="text-success">O Surgimento da Pizza</h3>
-        </div>
-
-        <div class="row align-items-center bg-white p-5 rounded shadow-sm">
-            <div class="col-md-6 mb-4 mb-md-0">
-                <p class="lead text-muted text-justify">
-                    A verdadeira pizza nasceu em Nápoles, na Itália, no século XVIII. Era um prato popular entre os trabalhadores por ser barato e rápido de comer. A clássica Margherita foi criada em 1889 para homenagear a Rainha Margherita de Saboia, levando as cores da bandeira italiana: tomate (vermelho), muçarela (branco) e manjericão (verde).
-                </p>
-            </div>
-            <div class="col-md-6 text-center">
-                <iframe width="100%" height="315" src="https://youtu.be/6hbsPB41rFM?si=2Y8Mk0uzFYaEsYAq" title="História da Pizza" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded shadow"></iframe>
-            </div>
-        </div>
-    </div>
 
     <footer class="text-center py-4 text-muted">
         <p>© 2026 - Projeto Acadêmico Cucina Nostra | João Gabriel Tavares de Lira</p>

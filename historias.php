@@ -17,11 +17,10 @@
                <h3 class="text-success">O Surgimento da Pizza</h3> A verdadeira pizza nasceu em Nápoles, na Itália, no século XVIII. Era um prato popular entre os trabalhadores por ser barato e rápido de comer. A clássica Margherita foi criada em 1889 para homenagear a Rainha Margherita de Saboia, levando as cores da bandeira italiana: tomate (vermelho), muçarela (branco) e manjericão (verde).</p>
             </div>
             <div class="col-md-6 text-center">
-                <iframe width="100%" height="315" src="https://youtu.be/6hbsPB41rFM?si=2Y8Mk0uzFYaEsYAq" title="História da Pizza" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded shadow"></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6hbsPB41rFM?si=y5hPREk0fBUMa7qr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
-        </div>
-    </div>
+    
 
     <div class="separador-bandeira mt-5"></div>
 
