@@ -59,4 +59,4 @@ Siga os passos abaixo para testar o projeto na sua máquina:
 1. **Pré-requisitos:** Tenha o [XAMPP](https://www.apachefriends.org/) (ou WAMP) instalado.
 2. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/joaogablira/cucina_nostra.git](https://github.com/joaogablira/cucina_nostra.git)
+   git clone [[https://github.com/joaogablira/Cucina_Nostra.git]](https://github.com/joaogablira/Cucina-Nostra.git)
