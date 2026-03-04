@@ -26,7 +26,7 @@ O objetivo do sistema é permitir que os amantes da culinária não apenas consu
 
 O design premium e a interface de usuário (UI) foram inteiramente prototipados no Figma antes da codificação, utilizando conceitos de Glassmorphism, Gradients e tipografia elegante (*Playfair Display* e *Poppins*).
 
-🔗 **[Clique aqui para ver o protótipo no Figma]**[(https://www.figma.com/design/9tyNAS3SJjgAQ19phRiXVs/Cucina-Nostra?node-id=0-1&t=JAhRGXF1OlQgEuLb-0)]](
+🔗 **[Clique aqui para ver o protótipo no Figma](https://www.figma.com/design/9tyNAS3SJjgAQ19phRiXVs/Cucina-Nostra?node-id=0-1&t=JAhRGXF1OlQgEuLb-0)**
 
 ---
 
@@ -59,4 +59,4 @@ Siga os passos abaixo para testar o projeto na sua máquina:
 1. **Pré-requisitos:** Tenha o [XAMPP](https://www.apachefriends.org/) (ou WAMP) instalado.
 2. **Clone o repositório:**
    ```bash
-   git clone [[https://github.com/joaogablira/Cucina_Nostra.git]](https://github.com/joaogablira/Cucina-Nostra.git)
+   git clone [https://github.com/joaogablira/Cucina-Nostra.git](https://github.com/joaogablira/Cucina-Nostra.git)
