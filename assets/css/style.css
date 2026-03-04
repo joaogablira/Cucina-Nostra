@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+/* =========================================
+   VARIÁVEIS GLOBAIS E BASE
+   ========================================= */
+:root {
+    /* Cores Sólidas Base */
+    --verde-italia: #4CAF50;
+    --vermelho-italia: #FF3B30;
+    --azul-escuro: #1E3A8A;
+    --fundo-claro: #F8F9FA;
+    
+    /* Degradês Premium (O Glow Up) */
+    --verde-gradient: linear-gradient(135deg, #2d6a4f 0%, #4CAF50 100%);
+    --vermelho-gradient: linear-gradient(135deg, #a4133c 0%, #FF3B30 100%);
+    --azul-gradient: linear-gradient(135deg, #1E3A8A 0%, #3b82f6 100%);
+    
+    /* Sombras Suaves (Modernidade) */
+    --sombra-card: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --sombra-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--fundo-claro);
+    color: #333;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .hero-title {
+    font-family: 'Playfair Display', serif;
+}
+
+/* =========================================
+   UTILITÁRIOS (Novas adições para você usar no HTML)
+   ========================================= */
+.text-azul-escuro { color: var(--azul-escuro) !important; }
+
+/* Textos com Degradê (Use em <span> ou <h1>) */
+.text-gradient-green {
+    background: var(--verde-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.text-gradient-red {
+    background: var(--vermelho-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+/* =========================================
+   ANIMAÇÕES E SEPARADORES
+   ========================================= */
+.escondido {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Movimento mais elástico e natural */
+}
+
+.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.separador-bandeira {
+    width: 100%;
+    height: 60px; 
+    background-image: url('../img/bandeira-onda.png'); 
+    background-repeat: repeat-x;
+    background-size: contain;
+    animation: moverOnda 15s linear infinite; 
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Sombra na própria onda */
+}
+
+@keyframes moverOnda {
+    0% { background-position: 0 0; }
+    100% { background-position: -1000px 0; }
+}
+
+@keyframes surgirSuave {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   PÁGINA INICIAL E NAVBAR
+   ========================================= */
+.navbar-custom {
+    background: var(--verde-gradient);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 12px 0;
+}
+
+.navbar-custom .nav-link, 
+.navbar-custom .navbar-brand {
+    color: white !important;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.navbar-custom .nav-link:hover {
+    opacity: 0.8;
+}
+
+.navbar-brand img {
+    height: 45px !important;
+    width: auto;
+    margin-right: 12px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.search-container {
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.avatar-circle {
+    width: 28px;
+    height: 28px;
+    background-color: white;
+    color: var(--verde-italia);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('../img/coliseu.jpg') center/cover fixed;
+    background-repeat: no-repeat;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    border-radius: 0 0 50px 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.hero-title {
+    font-size: 4rem;
+    line-height: 1.2;
+}
+
+.btn-custom-red {
+    background-color: #FF3B30;
+    color: white;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 12px 35px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(252, 21, 9, 0.808);
+    transition: all 0.3s ease;
+}
+
+.btn-custom-red:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 59, 48, 0.4);
+    color: white;
+}
+
+.btn-hero {
+    background-color: #FF3B30; /* Vermelho vivo do Figma */
+    color: white !important;
+    font-weight: 600;
+    padding: 15px 40px;
+    border-radius: 6px; /* Borda só um pouquinho arredondada, não é pilula */
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 59, 48, 0.5); /* Sombra vermelha brilhante */
+}
+
+.btn-hero:hover {
+    background-color: #d32f2f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 59, 48, 0.6);
+}
+
+/* Cards de Categoria */
+.category-card {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.category-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--verde-italia);
+    box-shadow: var(--sombra-hover);
+}
+
+.section-title {
+    text-align: center;
+    color: var(--azul-escuro);
+    font-weight: 700;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+}
+
+/* Cards de Receitas */
+.recipe-card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    box-shadow: var(--sombra-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-hover);
+}
+
+.recipe-card img {
+    transition: transform 0.5s ease;
+}
+
+.recipe-card:hover img {
+    transform: scale(1.05); /* Efeito de zoom na imagem ao passar o mouse */
+}
+
+/* =========================================
+   PÁGINA DE LOGIN E CADASTRO 
+   ========================================= */
+.login-body {
+    background: #f8f9fa; 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.auth-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+    width: 100%;
+    max-width: 900px;
+    min-height: 550px; /* Trava a altura para não pular */
+    display: flex;
+    animation: surgirSuave 0.6s ease-out forwards;
+}
+
+.auth-form {
+    padding: 60px 50px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Abas Entrar / Cadastrar idênticas ao Figma */
+.custom-tab {
+    color: #0d6efd;
+    font-weight: 700;
+    border-radius: 30px !important;
+    padding: 8px 25px !important;
+    background: transparent;
+    border: none;
+}
+.custom-tab.active {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+/* Inputs suaves do Figma (sem borda, fundo cinza) */
+.form-control-custom {
+    background-color: #f0f4f8; 
+    border: none;
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    width: 100%;
+    margin-top: 5px;
+}
+.form-control-custom:focus {
+    outline: none;
+    background-color: #e2e8f0;
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+}
+
+/* Botões Pílula (Totalmente redondos nas pontas) */
+/* Botões de Ação do Formulário */
+.btn-login-verde {
+    background: var(--verde-gradient);
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-verde:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    color: white;
+}
+
+.btn-login-vermelho {
+    background-color: #EA4335; /* Vermelho do Figma */
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(13, 13, 13, 0.3);
+    transition: all 0.3s ease;
+}
+.btn-login-vermelho:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(202, 22, 22, 0.853);
+    color: white;
+}
+
+.btn-login-vermelho:hover { background-color: #c62828; color: white; transform: translateY(-2px); }
+
+/* Lado Direito (Azul com a logo colorida gigante no fundo) */
+.auth-image {
+    width: 50%;
+    /* Fundo azul com textura suave */
+    background: linear-gradient(rgba(68, 118, 255, 0.163), rgba(0, 0, 0, 0.9)), url('../img/login-bg.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Faz a logo ser cortada nas bordas certinho */
+}
+
+.auth-logo-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130%; 
+    min-width: 400px;
+    z-index: 1;
+}
+
+.auth-image-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 40px;
+}
+.auth-image-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Sombra para ler por cima da logo */
+}
