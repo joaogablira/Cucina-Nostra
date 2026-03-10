@@ -14,17 +14,12 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sugerir Receita - Cucina Nostra</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="bg-light">
 
-    <nav class="navbar navbar-custom">
-        <div class="container">
-            <a class="navbar-brand" href="index.php"><strong>← Voltar para Cucina Nostra</strong></a>
-            <span class="text-white">Logado como: <strong><?php echo htmlspecialchars($_SESSION['user_name']); ?></strong></span>
-        </div>
-    </nav>
+    <?php include __DIR__ . '/views/navbar.php'; ?>
 
     <div class="container my-5" style="animation: surgirSuave 0.6s ease-out forwards;">
         <div class="row justify-content-center">
@@ -62,24 +57,24 @@ if (!isset($_SESSION['user_id'])) {
                                 <textarea name="preparation" class="form-control" rows="5" placeholder="Descreva o passo a passo..." required></textarea>
                             </div>
 
-                            <form action="controllers/RecipeController.php?action=create" method="POST" enctype="multipart/form-data">
-
-                                <div class="mb-5">
-                                    <label class="form-label fw-bold">Imagem da Receita</label>
-                                    <input type="file" name="image_upload" class="form-control" accept="image/*" required>
-                                    <div class="form-text">Envie uma foto bonita do prato direto do seu computador ou celular (JPG, PNG).</div>
-                                </div>
+                            <div class="mb-5">
+                                <label class="form-label fw-bold">Imagem da Receita</label>
+                                <input type="file" name="image_upload" class="form-control" accept="image/*" required>
+                                <div class="form-text">Envie uma foto bonita do prato direto do seu computador ou celular (JPG, PNG).</div>
+                            </div>
 
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-verde btn-lg rounded-pill fw-bold">Enviar para Votação</button>
                             </div>
-                        </form>
+                        </form> 
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <?php include __DIR__ . '/views/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.js"></script>

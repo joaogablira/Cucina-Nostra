@@ -363,3 +363,162 @@ h1, h2, h3, .hero-title {
     margin-bottom: 15px;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Sombra para ler por cima da logo */
 }
+/* =========================================
+   DARK MODE (Soft & Premium)
+   ========================================= */
+body.dark-theme, body.dark-theme.bg-light {
+    background-color: #121212 !important; /* Grafite chique */
+    color: #e0e0e0 !important; /* Texto claro que não cansa a vista */
+}
+
+/* Escurece a Navbar */
+body.dark-theme .navbar-custom {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid #333;
+}
+
+/* Escurece os Cartões (Cards, Categorias e Login) */
+body.dark-theme .card, 
+body.dark-theme .auth-container, 
+body.dark-theme .category-card {
+    background-color: #1e1e1e !important;
+    border-color: #2c2c2c !important;
+    color: #e0e0e0 !important;
+}
+
+/* Ajusta os títulos para ficarem brancos */
+body.dark-theme h1, body.dark-theme h2, body.dark-theme h3, 
+body.dark-theme h4, body.dark-theme h5, 
+body.dark-theme .text-azul-escuro, body.dark-theme .text-dark {
+    color: #f5f5f5 !important;
+}
+
+/* Ajusta os inputs de formulário e pesquisa */
+body.dark-theme .form-control, 
+body.dark-theme .form-select, 
+body.dark-theme .form-control-custom {
+    background-color: #2a2a2a !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #444 !important;
+}
+
+body.dark-theme .form-control::placeholder {
+    color: #888 !important;
+}
+
+/* Escurece o menu Dropdown do Perfil */
+body.dark-theme .dropdown-menu {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+}
+
+body.dark-theme .dropdown-item {
+    color: #e0e0e0 !important;
+}
+
+body.dark-theme .dropdown-item:hover {
+    background-color: #2a2a2a !important;
+}
+
+/* Clareia os textos secundários para dar leitura no fundo escuro */
+body.dark-theme .text-muted {
+    color: #b0b0b0 !important; 
+}
+
+/* Garante que os botões não percam a cor do texto no modo escuro */
+body.dark-theme .btn-gradient-red,
+body.dark-theme .btn-gradient-green,
+body.dark-theme .btn-verde,
+body.dark-theme .btn-login-red {
+    color: #ffffff !important;
+}
+
+/* =========================================
+   EFEITO HOVER DOS CARTÕES (Cardápio)
+   ========================================= */
+.category-card {
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Borda invisível por padrão */
+}
+
+/* Quando passa o mouse, a borda fica verde e o cartão sobe um pouquinho */
+.category-card:hover {
+    border-color: #4caf50 !important; /* Verde Itália */
+    transform: translateY(-5px);
+}
+
+/* Se for no modo escuro, a borda no hover fica um verde mais brilhante */
+body.dark-theme .category-card:hover {
+    border-color: #66bb6a !important; 
+}
+
+/* Força o botão de buscar a ficar sempre branco, mesmo no modo escuro */
+.search-container .btn {
+    background-color: #EA4335 !important;
+    color: #ffffff !important; /* Verde do texto */
+}
+
+/* Um efeitinho pro botão quando passar o mouse */
+.search-container .btn:hover {
+    background-color: #ec4e3f !important;
+    color: #f1f1f1 !important;
+}
+
+/* =========================================
+   FOOTER PREMIUM
+   ========================================= */
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #f1f3f5;
+    color: #495057;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background-color: #4caf50; /* Verde ao passar o mouse */
+    color: white;
+    transform: translateY(-4px); /* Dá um pulinho */
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.footer-link {
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+}
+
+.footer-link:hover {
+    color: #4caf50 !important;
+    padding-left: 5px; /* Efeito de deslizar a palavra pro lado */
+}
+
+/* Garante que o Footer respeite o Dark Mode */
+body.dark-theme footer {
+    background-color: #1a1a1a !important;
+    border-top: 1px solid #333 !important;
+}
+
+body.dark-theme footer .border-top {
+    border-color: #333 !important;
+}
+
+body.dark-theme .social-icon {
+    background-color: #2a2a2a;
+    color: #b0b0b0;
+}
+
+body.dark-theme .social-icon:hover {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* Cores da badge do Google */
+.g-blue { color: #4285F4; }
+.g-red { color: #EA4335; }
+.g-yellow { color: #FBBC05; }
+.g-green { color: #34A853; }

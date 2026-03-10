@@ -38,7 +38,7 @@ $minhas_receitas = $stmt_recipes->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body class="bg-light">
 
-    <?php include 'views/navbar.php'; ?>
+    <?php include __DIR__ . '/views/navbar.php'; ?>
 
     <div class="container my-5 pt-4">
         <div class="row">
@@ -116,6 +116,8 @@ $minhas_receitas = $stmt_recipes->fetchAll(PDO::FETCH_ASSOC);
 
         </div>
     </div>
+
+    <?php include __DIR__ . '/views/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
