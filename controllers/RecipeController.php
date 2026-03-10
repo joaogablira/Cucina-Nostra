@@ -42,11 +42,13 @@ if ($action == 'create') {
             // Se deu certo, o caminho que vai pro banco de dados é:
             $image_path = 'assets/img/uploads/' . $novo_nome;
         } else {
-            echo "<script>alert('Erro ao salvar a imagem na pasta.'); window.location.href='../sugerir_receita.php';</script>";
+            // AQUI MUDOU: Volta uma página sem perder os textos digitados
+            echo "<script>alert('Erro ao salvar a imagem na pasta.'); history.back();</script>";
             exit;
         }
     } else {
-        echo "<script>alert('Você precisa enviar uma imagem válida!'); window.location.href='../sugerir_receita.php';</script>";
+        // AQUI MUDOU: Volta uma página sem perder os textos digitados
+        echo "<script>alert('Você precisa enviar uma imagem válida!'); history.back();</script>";
         exit;
     }
 
@@ -64,9 +66,11 @@ if ($action == 'create') {
 
         // aqui a caçamba executa e avisa o usuário
         if ($stmt->execute()) {
+            // SUCESSO: Como deu tudo certo, aí sim a gente tira o cara dessa página e joga na Home!
             echo "<script>alert('Mamma mia! Sua receita foi enviada com sucesso e já está na área de votação!'); window.location.href='../index.php';</script>";
         } else {
-            echo "<script>alert('Ops, ocorreu um erro ao salvar sua receita. Tente novamente.'); window.location.href='../sugerir_receita.php';</script>";
+            // AQUI MUDOU: Deu erro? Volta sem perder os dados
+            echo "<script>alert('Ops, ocorreu um erro ao salvar sua receita. Tente novamente.'); history.back();</script>";
         }
 
     } catch(PDOException $e) {
