@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Mar-2026 às 16:24
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 7.4.29
+-- Tempo de geração: 11/03/2026 às 09:25
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,16 +24,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categories`
+-- Estrutura para tabela `categories`
 --
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `categories`
+-- Despejando dados para a tabela `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `recipes`
+-- Estrutura para tabela `recipes`
 --
 
 CREATE TABLE `recipes` (
@@ -58,20 +58,27 @@ CREATE TABLE `recipes` (
   `image_url` varchar(255) DEFAULT NULL,
   `status` enum('pending','approved') DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `recipes`
+-- Despejando dados para a tabela `recipes`
 --
 
 INSERT INTO `recipes` (`id`, `user_id`, `category_id`, `title`, `ingredients`, `preparation`, `image_url`, `status`, `created_at`) VALUES
-(1, 1, 1, 'Macarrão de Joãozinho', 'Macarrão de joaozinho\r\nMolho de tomate\r\noregano\r\nsal\r\npimenta\r\nfolha de manjericão', 'joga tudo na panela', 'assets/img/uploads/69aae6a639b60.jpg', 'pending', '2026-03-06 14:37:26'),
-(2, 2, 4, 'Sopa de Pedra', '300g de brita triturada\r\n500g de mármore carrara em cubos\r\n2L de água do rio Tietê\r\ncimento a gosto\r\nparalelepípedo moído para temperar', 'Refogue a brita triturada com sal e cebola. Em seguida adicione o mármore até ele ficar dourado. Jogue tudo numa vasillha grande e termine adicionando a água do rio, cimento e o paralelepípedo.', 'assets/img/uploads/69aaea6694f6b.png', 'pending', '2026-03-06 14:53:26');
+(2, 3, 1, 'Linguini al Pesto Genovese (Especial do Chef)', '500g de massa tipo Linguini\n2 maços de manjericão fresco\n50g de pinolis (ou nozes/castanhas)\n50g de queijo Parmigiano-Reggiano\n50g de queijo Pecorino\n2 dentes de alho\n1 xícara de azeite extra virgem\nSal grosso', '1. No pilão (ou processador), amasse o alho com um pouco de sal grosso.\n2. Adicione as folhas de manjericão e continue amassando delicadamente.\n3. Junte os pinolis e os queijos ralados.\n4. Vá adicionando o azeite aos poucos até formar um creme verde lindo e aromático.\n5. Cozinhe o Linguini al dente, escorra (reserve um pouco da água) e misture com o pesto fora do fogo. \n6. Sirva com um ratinho debaixo do chapéu... ops, digo, com muito parmesão por cima!', 'https://images.unsplash.com/photo-1595295333158-4742f28fbd85?auto=format&fit=crop&w=800&q=80', 'pending', '2026-03-10 20:46:05'),
+(3, 3, 1, 'Spaghetti à Carbonara', '400g de spaghetti\n150g de guanciale ou bacon\n4 gemas de ovo\n100g de queijo pecorino\nPimenta do reino', 'Frite o bacon até dourar. Misture as gemas com o queijo e a pimenta. Cozinhe a massa, junte ao bacon e, com o fogo desligado, adicione o creme de ovos. Misture rápido para não cozinhar o ovo.', 'assets/img/cozinhando.jpg', 'approved', '2026-03-11 08:24:38'),
+(4, 3, 1, 'Lasanha à Bolonhesa', '500g de massa de lasanha\n500g de carne moída\nMolho de tomate rústico\n300g de queijo muçarela', 'Faça um molho bolonhesa encorpado. Em uma travessa, intercale: molho, massa, carne e queijo. Termine com bastante queijo e asse por 40 minutos a 200°C.', 'assets/img/cozinhando.jpg', 'approved', '2026-03-11 08:24:38'),
+(5, 3, 2, 'Pizza Margherita Clássica', 'Massa de fermentação natural\nMolho de tomate pelati\nMuçarela de búfala\nFolhas de manjericão fresco', 'Abra a massa com as mãos. Espalhe uma concha de molho. Distribua a muçarela rasgada e leve ao forno na temperatura máxima. Finalize com o manjericão e azeite.', 'assets/img/cozinhando.jpg', 'approved', '2026-03-11 08:24:38'),
+(6, 3, 2, 'Pizza de Pepperoni', 'Massa de pizza\nMolho de tomate\nMuçarela ralada\nFatias de pepperoni', 'Espalhe o molho sobre a massa, cubra com uma camada generosa de queijo muçarela e distribua as fatias de pepperoni. Asse até o pepperoni ficar crocante nas bordas.', 'assets/img/cozinhando.jpg', 'approved', '2026-03-11 08:24:38'),
+(7, 3, 3, 'Tiramisù Tradicional', 'Biscoito champanhe\nCafé expresso forte\n500g de queijo Mascarpone\n3 gemas e açúcar\nCacau em pó', 'Bata as gemas com açúcar e misture ao mascarpone. Mergulhe os biscoitos no café rapidamente. Monte em camadas de biscoito e creme. Gele por 4 horas e polvilhe cacau.', 'assets/img/cozinhando.jpg', 'approved', '2026-03-11 08:24:38'),
+(8, 3, 3, 'Cannoli Siciliano', 'Massa frita em formato de tubo\nRicota fresca escorrida\nAçúcar de confeiteiro\nGotas de chocolate', 'Misture a ricota com o açúcar e as gotas de chocolate até formar um creme firme. Coloque em um saco de confeitar e recheie os tubos de massa apenas na hora de servir.', 'assets/img/cozinhando.jpg', 'approved', '2026-03-11 08:24:38'),
+(9, 3, 4, 'Bife à Parmegiana', '4 bifes de alcatra\nFarinha de trigo e rosca para empanar\nMolho de tomate\nMuçarela fatiada', 'Tempere os bifes, passe na farinha de trigo, no ovo e na farinha de rosca. Frite em óleo quente. Coloque em uma assadeira, cubra com molho, bastante queijo e gratine no forno.', 'assets/img/cozinhando.jpg', 'approved', '2026-03-11 08:24:38'),
+(10, 3, 4, 'Ossobuco com Polenta', '4 pedaços de ossobuco de vitelo\nVinho tinto\nCenoura, cebola e aipo\nPolenta cremosa', 'Sele a carne na panela. Adicione os legumes picados e o vinho. Deixe cozinhar em fogo muito baixo por 3 horas até a carne desmanchar. Sirva sobre a polenta cremosa.', 'assets/img/cozinhando.jpg', 'approved', '2026-03-11 08:24:38');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Estrutura para tabela `users`
 --
 
 CREATE TABLE `users` (
@@ -79,21 +86,23 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `bio` text DEFAULT NULL,
+  `profile_pic` varchar(255) DEFAULT 'assets/img/default-avatar.png'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `users`
+-- Despejando dados para a tabela `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`) VALUES
-(1, 'Suzuki Cometi Seppuku', 'arthur_suzukas@gmail.com', '$2y$10$lCk.TQ8vJ420ovufT7ae7uMT8XMmaHBpYz9yQ6ZJDgY7blmxZAcfa', '2026-03-06 14:34:40'),
-(2, 'No-Lock', 'no.lock@gmail.com', '$2y$10$ce.sZz83GdDcpTjUr8trIOo8qnCkfKHaWK0hnmCTCdCVfO0yY5./e', '2026-03-06 14:44:08');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `bio`, `profile_pic`) VALUES
+(1, 'jg', 'jg@gmail.com', '1234', '2026-03-03 20:44:22', NULL, 'assets/img/default-avatar.png'),
+(3, 'Chef Linguini', 'linguini@gusteau.com', '$2y$10$ekxYGrGIqfAF7SuDFAI6W.UkXt4lU.25dmkL4lwk1NgMw2RFMbs6q', '2026-03-10 20:37:28', 'Cuidado com os ratão\' e parceiro do melhor cozinheiro de Paris.', 'assets/img/cozinhando.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `votes`
+-- Estrutura para tabela `votes`
 --
 
 CREATE TABLE `votes` (
@@ -101,29 +110,20 @@ CREATE TABLE `votes` (
   `user_id` int(11) DEFAULT NULL,
   `recipe_id` int(11) DEFAULT NULL,
   `voted_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `votes`
---
-
-INSERT INTO `votes` (`id`, `user_id`, `recipe_id`, `voted_at`) VALUES
-(1, 1, 1, '2026-03-06 14:37:38'),
-(3, 2, 1, '2026-03-06 14:44:35'),
-(6, 2, 2, '2026-03-06 14:53:36');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `categories`
+-- Índices de tabela `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `recipes`
+-- Índices de tabela `recipes`
 --
 ALTER TABLE `recipes`
   ADD PRIMARY KEY (`id`),
@@ -131,14 +131,14 @@ ALTER TABLE `recipes`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Índices para tabela `users`
+-- Índices de tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Índices para tabela `votes`
+-- Índices de tabela `votes`
 --
 ALTER TABLE `votes`
   ADD PRIMARY KEY (`id`),
@@ -146,7 +146,7 @@ ALTER TABLE `votes`
   ADD KEY `recipe_id` (`recipe_id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -159,33 +159,33 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de tabela `recipes`
 --
 ALTER TABLE `recipes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `recipes`
+-- Restrições para tabelas `recipes`
 --
 ALTER TABLE `recipes`
   ADD CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `recipes_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
 
 --
--- Limitadores para a tabela `votes`
+-- Restrições para tabelas `votes`
 --
 ALTER TABLE `votes`
   ADD CONSTRAINT `votes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),

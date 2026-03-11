@@ -65,20 +65,26 @@ $minhas_receitas = $stmt_recipes->fetchAll(PDO::FETCH_ASSOC);
                     <hr>
                     
                     <h5 class="fw-bold text-start mt-4 mb-3 text-gradient-red">Editar Perfil</h5>
-                    <form action="#" method="POST" class="text-start">
+                    <form action="controllers/AuthController.php" method="POST" enctype="multipart/form-data" class="text-start">
+                        <input type="hidden" name="action" value="update_profile">
+                        
+                        <div class="mb-3">
+                            <label class="small text-muted">Foto de Perfil</label>
+                            <input type="file" name="profile_pic" class="form-control" accept="image/*">
+                        </div>
                         <div class="mb-3">
                             <label class="small text-muted">Nome de Exibição</label>
-                            <input type="text" class="form-control" value="<?php echo htmlspecialchars($user['name']); ?>">
+                            <input type="text" name="name" class="form-control" value="<?php echo htmlspecialchars($user['name']); ?>" required>
                         </div>
                         <div class="mb-3">
                             <label class="small text-muted">Biografia (Sobre mim)</label>
-                            <textarea class="form-control" rows="3"><?php echo htmlspecialchars($user['bio']); ?></textarea>
+                            <textarea name="bio" class="form-control" rows="3"><?php echo htmlspecialchars($user['bio'] ?? ''); ?></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="small text-muted">Nova Senha (deixe em branco para não alterar)</label>
-                            <input type="password" class="form-control" placeholder="••••••••">
+                            <input type="password" name="new_password" class="form-control" placeholder="••••••••">
                         </div>
-                        <button type="button" class="btn btn-gradient-red w-100 rounded-pill mt-2" onclick="alert('Funcionalidade de atualização em desenvolvimento para a V2 do projeto!')">Salvar Alterações</button>
+                        <button type="submit" class="btn btn-gradient-red w-100 rounded-pill mt-2">Salvar Alterações</button>
                     </form>
                 </div>
             </div>

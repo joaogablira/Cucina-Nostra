@@ -40,13 +40,40 @@ if (!$receita) {
             </div>
             <div class="col-md-6">
                 <h1 class="fw-bold text-azul-escuro font-playfair"><?php echo htmlspecialchars($receita['title']); ?></h1>
-                <p class="text-muted">Enviado por: <strong><?php echo htmlspecialchars($receita['autor']); ?></strong></p>
-                <h4 class="text-danger mt-4">♥ <?php echo $receita['total_votos']; ?> Votos</h4>
+                <p class="text-muted d-flex align-items-center gap-2">
+                    Enviado por: 
+                    <a href="perfil.php?id=<?php echo $receita['user_id']; ?>" class="text-decoration-none text-azul-escuro fw-bold fs-5 hover-underline">
+                        👨‍🍳 <?php echo htmlspecialchars($receita['autor']); ?>
+                    </a>
+                </p>
+                <h4 class="text-danger mt-4 fw-bold"><?php echo $receita['total_votos']; ?> Votos</h4>
                 
-                <form action="controllers/VoteController.php" method="POST" class="mt-3">
+                <form action="controllers/VoteController.php" method="POST" class="mt-3" id="formVoto">
                     <input type="hidden" name="recipe_id" value="<?php echo $receita['id']; ?>">
-                    <button type="submit" class="btn btn-gradient-green btn-lg rounded-pill shadow-sm"> ✓ Votar nesta Receita</button>
+                    
+                    <button type="button" onclick="computarVotoAnimado()" class="btn btn-outline-danger btn-lg rounded-pill shadow-sm d-flex align-items-center gap-2 fw-bold">
+                        
+                        <span style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; margin-left: -5px;">
+                            <lottie-player id="lottie-heart" src="assets/img/Heart Animated.json" background="transparent" speed="1.5" style="width: 150%; height: 150%;"></lottie-player>
+                        </span>
+                        
+                        Votar nesta Receita
+                    </button>
                 </form>
+
+                <script>
+                    function computarVotoAnimado() {
+                        const lottieHeart = document.getElementById('lottie-heart');
+                        
+                        // Dá o play na animação do coração preenchendo
+                        lottieHeart.play();
+                        
+                        // Segura o envio do formulário por 1 segundo (1000ms) pra dar tempo da animação rodar na tela
+                        setTimeout(() => {
+                            document.getElementById('formVoto').submit();
+                        }, 1000);
+                    }
+                </script>
             </div>
         </div>
 

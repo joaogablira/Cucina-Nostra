@@ -90,7 +90,57 @@ elseif ($action == 'login') {
         echo "Erro: " . $e->getMessage();
     }
 }
+// ==========================================
+// LÓGICA DE ATUALIZAR PERFIL
+// ==========================================
+elseif ($action == 'update_profile') {
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: ../login.php");
+        exit;
+    }
 
+    $user_id = $_SESSION['user_id'];
+    $name = trim($_POST['name']);
+    $bio = trim($_POST['bio']);
+    $new_password = $_POST['new_password'];
+    
+    // Atualiza nome e bio básicos
+    $update_query = "UPDATE users SET name = :name, bio = :bio WHERE id = :id";
+    $params = [':name' => $name, ':bio' => $bio, ':id' => $user_id];
+
+    // Se ele digitou uma senha nova, adiciona na query
+    if (!empty($new_password)) {
+        $update_query = "UPDATE users SET name = :name, bio = :bio, password = :password WHERE id = :id";
+        $params[':password'] = password_hash($new_password, PASSWORD_DEFAULT);
+    }
+
+    // Tratamento do Upload da Foto de Perfil
+    if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
+        $extensao = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
+        $novo_nome = 'user_' . $user_id . '_' . uniqid() . '.' . $extensao;
+        $diretorio_destino = '../assets/img/uploads/';
+        
+        if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $diretorio_destino . $novo_nome)) {
+            $image_path = 'assets/img/uploads/' . $novo_nome;
+            // Atualiza a query para incluir a foto
+            $update_query = str_replace("WHERE id", ", profile_pic = :profile_pic WHERE id", $update_query);
+            $params[':profile_pic'] = $image_path;
+        }
+    }
+
+    try {
+        $stmt = $conn->prepare($update_query);
+        if ($stmt->execute($params)) {
+            $_SESSION['user_name'] = $name; // Atualiza o nome na sessão
+            echo "<script>alert('Perfil atualizado com sucesso!'); window.location.href='../user.php';</script>";
+        } else {
+            echo "<script>alert('Erro ao atualizar perfil.'); history.back();</script>";
+        }
+    } catch(PDOException $e) {
+        echo "Erro: " . $e->getMessage();
+    }
+    exit;
+}
 // ==========================================
 // 3. LÓGICA DE LOGOUT (SAIR)
 // ==========================================

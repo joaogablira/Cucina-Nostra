@@ -122,11 +122,21 @@ $receitas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-body p-4 d-flex flex-column h-100 card-body-blue">
-                                        <h5 class="card-title fw-bold text-gradient-red"><?php echo htmlspecialchars($receita['title']); ?></h5>
+                                        <p class="small text-muted mb-2 d-flex align-items-center gap-1">
+                                            Chef: 
+                                            <a href="perfil.php?id=<?php echo $receita['user_id']; ?>" class="text-decoration-none text-azul-escuro fw-bold hover-underline">
+                                                👨‍🍳 <?php echo htmlspecialchars($receita['autor']); ?>
+                                            </a>
+                                        </p>
                                         <p class="small text-muted mb-2">Chef: <strong><?php echo htmlspecialchars($receita['autor']); ?></strong></p>
                                         
-                                        <div class="d-inline-block bg-white px-3 py-1 rounded-pill shadow-sm mb-3 border" style="width: fit-content;">
-                                            <span class="small fw-bold text-danger">❤️ <?php echo $receita['total_votos']; ?> Votos</span>
+                                       <div class="d-inline-block bg-white px-3 py-1 rounded-pill shadow-sm mb-3 border" style="width: fit-content;">
+                                            <span class="small fw-bold text-danger d-flex align-items-center gap-1">
+                                                <span style="width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;">
+                                                    <lottie-player src="assets/img/Heart Animated.json" background="transparent" speed="1" style="width: 150%; height: 150%;" autoplay></lottie-player>
+                                                </span>
+                                                <?php echo $receita['total_votos']; ?> Votos
+                                            </span>
                                         </div>
                                         
                                         <p class="card-text text-muted" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 0.95rem;">
